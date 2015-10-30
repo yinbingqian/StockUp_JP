@@ -1,0 +1,154 @@
+package com.sxit.activity.adviser.th.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sxit.activity.adviser.answer.AAnswerQusestion_Activity;
+import com.sxit.activity.adviser.th.item.adapter.Question_Adapter;
+import com.sxit.activity.adviser.th.item.bean.Question_ListBean;
+import com.sxit.activity.askingquest.AnswerQuestion_Activity;
+import com.sxit.activity.askingquest.AskingQuestionInfo_Activity;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.th.item.AskQuestion_Activity;
+import com.sxit.activity.th.item.adapter.AskQuestion_Adapter;
+import com.sxit.activity.th.item.bean.AskQuestion_ListBean;
+import lnpdit.lntv.tradingtime.R;
+
+public class QuestionList_Activity extends BaseActivity {
+	private TextView tv_asking;//提问
+//	private LinearLayout icl_noask, icl_listView;
+	private Button bt_askQuestion;
+	private int curUI;// 0：提问 1：answer
+	/** ListView **/
+	private PullToRefreshListView listView_askquestion;
+	private ListView listView;
+	private Question_Adapter adapter;
+	private List<Question_ListBean> list;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_questionlist_layout);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+//		icl_noask = (LinearLayout) findViewById(R.id.icl_noask);
+//		icl_listView = (LinearLayout) findViewById(R.id.icl_listView);
+		bt_askQuestion = (Button) findViewById(R.id.bt_askQuestion);
+		listView_askquestion = (PullToRefreshListView) findViewById(R.id.listView_askquestion);
+		listView = listView_askquestion.getRefreshableView();
+		tv_asking = (TextView) findViewById(R.id.tv_asking);
+		test();
+	}
+
+	private void test() {
+		list = new ArrayList<Question_ListBean>();
+		for (int i = 0; i < 2; i++) {
+			Question_ListBean bean = new Question_ListBean();
+			switch (i) {
+			case 0:
+				bean.setImgUrl(R.drawable.item_logo5);
+				bean.setName("王周俊");
+				bean.setAnswerState("0");
+				bean.setStartTime("8:30	发布了一条问题");
+				bean.setEndTime("15:30结束");
+				bean.setContent("海洋时代2商会上市股票发行是不是越多越好，发行多少才合适？");
+				bean.setMoney("50");
+//				bean.setAnswerNum("15");
+				break;
+			case 1:
+				bean.setImgUrl(R.drawable.item_logo5);
+				bean.setName("王周俊");
+				bean.setAnswerState("0");
+				bean.setStartTime("前天	发布了一条问题");
+				bean.setEndTime("15:30结束");
+				bean.setContent("海洋时代2商会上市股票发行是不是越多越好，发行多少才合适？");
+				bean.setMoney("80");
+//				bean.setAnswerNum("15");
+				break;
+			default:
+				break;
+			}
+			list.add(bean);
+		}
+		adapter = new Question_Adapter(this, list);
+		listView.setAdapter(adapter);
+	}
+
+	private void setListeners() {
+		bt_askQuestion.setOnClickListener(this);
+		tv_asking.setOnClickListener(this);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if(list.get(position - 1).getAnswerState().equals("0")){
+					intent.setClass(QuestionList_Activity.this, AAnswerQusestion_Activity.class);
+					startActivity(intent);
+				}
+			}
+		});
+	}
+
+	@Override
+	public void onClick(View v) {
+		super.onClick(v);
+		switch (v.getId()) {
+//		case R.id.bt_askQuestion:
+//			curUI = 1;
+//			changLoginState();
+//			break;
+		case R.id.tv_asking:
+			intent.setClass(QuestionList_Activity.this, AskingQuestionInfo_Activity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 切换UI状态
+	 */
+//	private void changLoginState() {
+//		switch (curUI) {
+//		case 0:
+//			icl_listView.setVisibility(View.GONE);
+//			icl_noask.setVisibility(View.VISIBLE);
+//			break;
+//		case 1:
+//			icl_listView.setVisibility(View.VISIBLE);
+//			icl_noask.setVisibility(View.GONE);
+//			break;
+//		default:
+//			break;
+//		}
+//	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+}

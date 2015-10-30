@@ -1,0 +1,45 @@
+package com.sxit.utils;
+
+import java.text.SimpleDateFormat;
+
+
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import android.widget.Toast;
+
+/**
+ * 工具类
+ * 
+ * @author huanyu 类名称：Utils 创建时间:2014-10-26 下午11:15:47
+ */
+public class Utils {
+	public static Toast toast;
+
+	/**
+	 * 消除Toast显示重复
+	 * 
+	 * @param context
+	 * @param msg
+	 *            提示语
+	 */
+	public static void showTextToast(Context context, String msg) {
+		if (toast == null) {
+			toast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_LONG);
+		} else {
+			toast.setText(msg);
+		}
+		toast.show();
+	}
+
+	public static String getImei(Context context) {
+		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		return telephonyManager.getDeviceId();
+	}
+
+	public static String getSystemDate() {
+		SimpleDateFormat dateformat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a1 = dateformat1.format(new java.util.Date());
+		return a1;
+	}
+
+}

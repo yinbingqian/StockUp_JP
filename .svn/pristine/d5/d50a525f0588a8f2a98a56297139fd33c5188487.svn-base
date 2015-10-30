@@ -1,0 +1,97 @@
+package com.sxit.activity.askingquest;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.instance.Instance;
+import lnpdit.lntv.tradingtime.R;
+import com.sxit.utils.Utils;
+
+/**
+ * 解答详情  Acy
+ * 
+ * @author huanyu 类名称：AnswerQuestion_Activity 创建时间:2014-10-29 下午4:56:35
+ */
+public class AnswerQuestionInfo_Activity extends BaseActivity {
+	private ImageView img_back,answerInfo_img;
+	private boolean isCheck;//采纳状态
+	private Button bt_check;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_answerquestioninfo);
+		intent = getIntent();
+		isCheck = intent.getBooleanExtra("isCheck", false);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		answerInfo_img = (ImageView) findViewById(R.id.answerInfo_img);
+		Instance.imageLoader.displayImage("http://img1.money.126.net/chart/hs/time/540x360/0000001.png", answerInfo_img, Instance.new_s_options);
+		bt_check = (Button) findViewById(R.id.bt_check);
+		if(isCheck){
+			bt_check.setText(getString(R.string.useanswer));
+		}
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		bt_check.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			callBackFinish(false);
+			break;
+		case R.id.bt_check:
+			if(isCheck){
+				Utils.showTextToast(AnswerQuestionInfo_Activity.this, "问题已采纳");
+			}else{
+				callBackFinish(true);
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	/**
+	 * activity
+	 * @param callisCheck 回调当前页面采纳状态 false：未采纳	true：采纳
+	 */
+	public void callBackFinish(boolean callisCheck) {
+		intent.putExtra("callisCheck", callisCheck);
+		setResult(0, intent);
+		finish();
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			callBackFinish(false);
+		}
+		return true;
+	}
+}

@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height54"
+        android:background="@drawable/title_bg"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/normal_height54"
+            android:layout_height="@dimen/normal_height54"
+            android:layout_gravity="center"
+            android:background="@drawable/head_background_select"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/opaskingtime"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize23"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="@dimen/normal_height54"
+            android:layout_height="@dimen/normal_height54"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/head_background_select"
+            android:gravity="center"
+            android:text="@string/ask_sumbit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_radio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height54"
+        android:background="@color/question_ll_bg"
+        android:padding="@dimen/marging5"
+        android:orientation="horizontal" >
+        <Button 
+            android:layout_height="fill_parent"
+            android:background="@drawable/reg_btn_bg_selector_1"
+            android:textColor="@color/white"
+            android:text="@string/opasking_button"
+            android:textSize="@dimen/textsize17"
+            android:layout_width="fill_parent"/>
+    </LinearLayout>
+
+</LinearLayout>

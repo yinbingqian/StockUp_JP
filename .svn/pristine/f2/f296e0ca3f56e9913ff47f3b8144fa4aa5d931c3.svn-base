@@ -1,0 +1,41 @@
+package com.sxit.activity.register;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.sxit.activity.base.BaseActivity;
+import lnpdit.lntv.tradingtime.R;
+
+public class Register_Activity extends BaseActivity {
+	private ImageView img_back;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_register);
+		this.isParentActivity = false;
+		img_back = (ImageView) findViewById(R.id.img_back);
+		img_back.setOnClickListener(this);
+
+	}
+	@Override  
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+	@Override
+	public void onEvent(Object obj) {
+		super.onEvent(obj);
+	}
+	
+	
+}

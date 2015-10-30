@@ -1,0 +1,88 @@
+package com.sxit.activity.adviser.th.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sxit.activity.adviser.publishmsg.PublishMsg_Acitivty;
+import com.sxit.activity.adviser.th.item.adapter.PublishMsg_Adapter;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.chatmsg.Chat_Activity;
+import com.sxit.activity.news.News_Activity;
+import com.sxit.activity.th.item.Information_Activity;
+import com.sxit.activity.th.item.adapter.Analyst_Adapter;
+import com.sxit.activity.th.item.adapter.Information_Adapter;
+import com.sxit.activity.th.item.bean.Analyst_ListBean;
+import com.sxit.activity.th.item.bean.Information_ListBean;
+import com.sxit.entity.PublishMessage;
+import lnpdit.lntv.tradingtime.R;
+
+public class PublishMsgList_Activity extends BaseActivity {
+	private PullToRefreshListView listView_analyst;
+	private ListView listView;
+	private Button bt_publish_msg;
+	public PublishMsg_Adapter adapter;
+	public List<PublishMessage> list;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_publishmsg_list_layout);
+		initView();
+	}
+
+	private void initView() {
+		listView_analyst = (PullToRefreshListView) findViewById(R.id.listView_analyst);
+		bt_publish_msg = (Button) findViewById(R.id.bt_publish_msg);
+		listView = listView_analyst.getRefreshableView();
+		bt_publish_msg.setOnClickListener(this);
+		test();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_publish_msg:
+			Intent intent = new Intent();
+			intent.setClass(PublishMsgList_Activity.this, PublishMsg_Acitivty.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	private void test() {
+		list = new ArrayList<PublishMessage>();
+		PublishMessage pm = new PublishMessage();
+		pm.setHeader("http://www.12371.gov.cn/UploadFiles/dhrw/2011/12/201112121424234996.jpg");
+		pm.setContent("0月28日晚间，广日股份发布2014年三季度业绩报告。报告显示，截止2014年9月30日，公司今年以来实现营业收入33.66亿元，与去年同期相比增长15.07%；归属于上市公司股东的净利润5.05亿元，同比增长25.02%；每股收益为0.62元。");
+		pm.setDate("2014-11-01");
+		pm.setImg_url("http://img1.money.126.net/chart/hs/time/540x360/0000001.png");
+		pm.setTitle("广日股份2014年前三季净增25% 新项目逐步发力");
+		pm.setWap_url("http://money.163.com/14/1028/22/A9M6SIHB00253B0H.html");
+		list.add(pm);
+		pm = new PublishMessage();
+		pm.setHeader("http://www.12371.gov.cn/UploadFiles/dhrw/2011/12/201112121424234996.jpg");
+		pm.setContent("民生证券发布研究报告点评“十八届四中全会”称，“这是中国最重要的决定”。不要低估改革的长期作用。三中全会将治理体系现代化作为改革总目标，其核心绝不是简单的行政管理体制改革，而是治国思路从人治到法治的根本转变。人治社会下市场规则无力发挥决定性作用，只有法治社会才能培育出健康的市场经济体系，改善微观经营环境，奠定牛市的基础。");
+		pm.setDate("2014-11-02");
+		pm.setImg_url("http://upload.njdaily.cn/2014/0210/1391990788994.jpg");
+		pm.setTitle("民生证券：法治社会改善微观环境 奠定牛市基础");
+		pm.setWap_url("http://money.163.com/14/1029/08/A9NA0RIK00254TFQ.html");
+		list.add(pm);
+		adapter = new PublishMsg_Adapter(this, list);
+		listView.setAdapter(adapter);
+	}
+}

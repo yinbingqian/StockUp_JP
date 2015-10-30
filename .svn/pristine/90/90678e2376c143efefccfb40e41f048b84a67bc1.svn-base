@@ -1,0 +1,198 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height54"
+        android:background="@drawable/title_bg"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="@dimen/normal_height54"
+            android:layout_height="@dimen/normal_height54"
+            android:background="@drawable/head_background_select"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/tabHost_second_a"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize23"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="@dimen/normal_height54"
+            android:layout_height="@dimen/normal_height54"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:background="@drawable/head_background_select"
+            android:gravity="center"
+            android:text="@string/nextdo"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:padding="@dimen/marging10" >
+<RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/normal_height48"
+            android:layout_height="@dimen/normal_height48"
+            android:scaleType="centerInside"
+            android:src="@drawable/item_logo5" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marging10"
+            android:layout_toRightOf="@id/img_icon"
+            android:text="王周俊"
+            android:textColor="@color/blcak_grey" />
+
+        <TextView
+            android:id="@+id/tv_questionState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_color"
+            android:text="答谢50红心" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginLeft="@dimen/marging10"
+            android:layout_marginTop="@dimen/marging10"
+            android:layout_toRightOf="@id/img_icon"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1.0"
+                android:text="8:30 提出一条问题"
+                android:textColor="@color/font_grey1" />
+
+            <TextView
+                android:id="@+id/tv_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="15:30 结束"
+                android:textColor="@color/font_grey1" />
+        </LinearLayout>
+    </RelativeLayout>
+<TextView
+        android:id="@+id/tv_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:ellipsize="marquee"
+        android:ems="3"
+        android:paddingBottom="24dp"
+        android:paddingTop="8dp"
+        android:text="海洋时代2商会上市股票发行是不是越多越好，发行多少才合适？我到底应该怎么做才好呢？请专家给一个稳妥的回答，我在此表示诚挚的感谢！"
+        android:textColor="@color/blcak_grey" />
+        <AutoCompleteTextView
+            android:id="@+id/actv_feedback"
+            style="@style/login_edittext_style"
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left|top"
+            android:hint="@string/publish_msg_type_tip"
+            android:textSize="@dimen/textsize16" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marging10" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/img_buffer"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/submit_img"
+                android:textSize="@dimen/textsize17"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="@dimen/marging10"
+            android:background="@color/divider" />
+
+        <com.sxit.customview.MyGridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marging10"
+            android:fadingEdge="none"
+            android:horizontalSpacing="20dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="4"
+            android:verticalSpacing="15dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="2px"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marging10"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="@string/mymoney"
+            android:textColor="@color/register_text_color"
+            android:textSize="@dimen/textsize16" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/normal_height42"
+            android:layout_margin="@dimen/marging10"
+            android:gravity="center"
+            android:background="@drawable/get_money_btn_selector"
+            android:text="@string/question_list_send_answer"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/textsize16" />
+    </LinearLayout>
+
+</LinearLayout>

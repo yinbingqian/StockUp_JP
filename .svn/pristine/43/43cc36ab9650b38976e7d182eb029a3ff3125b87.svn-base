@@ -1,0 +1,113 @@
+package com.sxit.activity.askingquest;
+
+import lnpdit.lntv.tradingtime.R;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.sxit.activity.askingquest.adapter.OpAnswer_Adapter;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.http.SoapRes;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.SOAP_UTILS;
+import com.sxit.utils.Utils;
+
+/**
+ * 解答时限 Acy
+ * 
+ * @author huanyu 类名称：OpAnswerTimeActivity 创建时间:2014-10-28 上午11:15:28
+ */
+public class OpAnswerTimeActivity extends BaseActivity {
+	private ImageView img_back;// back
+	private ListView lv_radio;//
+	private Button bt_submit;
+	private String times[] = new String[] { "2小时", "4小时", "8小时", "16小时", "24小时", "36小时", "48小时", "72小时" };
+	private String time;
+	private String money, content;// 悬赏值，内容
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_opanswertime);
+		this.isParentActivity = false;
+		intent = getIntent();
+		money = intent.getStringExtra("money");
+		content = intent.getStringExtra("content");
+		EventCache.opAnswerEvent.unregister(this);
+		EventCache.opAnswerEvent.register(this);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		bt_submit = (Button) findViewById(R.id.bt_submit);
+		lv_radio = (ListView) findViewById(R.id.lv_radio);
+		lv_radio.setAdapter(new OpAnswer_Adapter(this, times));
+		
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		bt_submit.setOnClickListener(this);
+	}
+
+	/**
+	 * radio点击回调
+	 * 
+	 * @param time
+	 *            选中时间
+	 */
+	public void onEvent(String time) {
+		this.time = time.replaceAll("小时", "");
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		case R.id.bt_submit:
+			if(time == null){
+				Utils.showTextToast(this, getString(R.string.answertime));
+				break;
+			}
+			String [] property_va = new String[]{getLoginUser().getRealname(),content,getLoginUser().getUserid(),money,time};
+			soapService.communicationAdd(property_va);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		EventCache.opAnswerEvent.unregister(this);
+	}
+
+	public void onEvent(SoapRes res) {
+		if (res.getCode().equals(SOAP_UTILS.METHOD.COMMUNICATIONADD)) {
+			if(res.getObj().toString().equals("true")){
+				Utils.showTextToast(this, getString(R.string.submit_success));
+				finish();
+			}else{
+				Utils.showTextToast(this, getString(R.string.submit_fail));
+			}
+		}
+	}
+
+}

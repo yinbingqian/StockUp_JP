@@ -1,0 +1,151 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/normal_height54"
+            android:background="@drawable/title_bg"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="@dimen/normal_height54"
+                android:layout_height="@dimen/normal_height54"
+                android:layout_gravity="center"
+                android:background="@drawable/head_background_select"
+                android:clickable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/img_back" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/register_admin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize23"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="@dimen/normal_height54"
+                android:layout_height="@dimen/normal_height54"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/head_background_select"
+                android:gravity="center"
+                android:text="@string/welcome_rigister"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize18"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_admin"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:hint="@string/register_tv_hint_admin"
+            android:textSize="@dimen/textsize18" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_password"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:hint="@string/register_tv_hint_password"
+            android:textSize="@dimen/textsize18" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_checkpassword"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:hint="@string/register_tv_hint_checkpassword"
+            android:textSize="@dimen/textsize18" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_phone"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:hint="@string/registrer_tv_phone"
+            android:textSize="@dimen/textsize18" />
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:orientation="horizontal" >
+
+            <AutoCompleteTextView
+                android:id="@+id/actv_checkCode"
+                style="@style/login_edittext_style"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="@dimen/marging5"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1.0"
+                android:textSize="@dimen/textsize18" />
+
+            <Button
+                style="@style/login_edittext_style"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/marging5"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/register_checkCode"
+                android:textColor="@color/register_checkcode_color"
+                android:textSize="@dimen/textsize18" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/cb_select"
+            style="@style/CustomCheckboxTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/register_protocol"
+            android:textColor="@color/register_protocol_color" />
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/title_bg"
+            android:text="@string/register_sumbit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/framelayout_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/black" >
+
+    <ImageView
+        android:id="@+id/imageView_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:scaleType="matrix" />
+
+    <TextView
+        android:id="@+id/tv_broder"
+        android:layout_width="300dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:background="@drawable/broder" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center" >
+
+        <Button
+            android:id="@+id/bt_repeal"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/aswers_mm_listitem"
+            android:gravity="center"
+            android:text="撤销" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/aswers_mm_listitem"
+            android:gravity="center"
+            android:text="保存" />
+    </RelativeLayout>
+
+</FrameLayout>

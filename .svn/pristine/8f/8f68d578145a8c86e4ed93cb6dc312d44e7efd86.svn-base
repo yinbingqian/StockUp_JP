@@ -1,0 +1,100 @@
+package com.sxit.activity.adviser.th.item.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.sxit.activity.wap.Wap_Activity;
+import com.sxit.entity.ChatMessage;
+import com.sxit.entity.PublishMessage;
+import com.sxit.instance.Instance;
+import lnpdit.lntv.tradingtime.R;
+
+public class PublishMsg_Adapter  extends BaseAdapter {
+	private Context context;
+	private List<PublishMessage> publishMessages;
+
+	public PublishMsg_Adapter(Context context, List<PublishMessage> publishMessages) {
+		super();
+		this.context = context;
+		this.publishMessages = publishMessages;}
+
+	public int getCount() {
+		return publishMessages.size();
+	}
+
+	public Object getItem(int position) {
+		return publishMessages.get(position);
+	}
+
+	public long getItemId(int position) {
+		return position;
+	}
+
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		final PublishMessage message = publishMessages.get(position);
+		if (convertView == null) {
+			holder = new ViewHolder();
+			convertView = LayoutInflater.from(context).inflate(R.layout.publish_msg_list_item_left, null);
+
+			holder.tvSendTime = (TextView) convertView.findViewById(R.id.chat_msg_list_item_sendtime_tv);
+			holder.ivHeader = (ImageView) convertView.findViewById(R.id.chat_msg_list_item_header_iv);
+			holder.xwtvTitle = (TextView) convertView.findViewById(R.id.chat_msg_list_item_content_xw_title);
+			holder.xwtvContent = (TextView) convertView.findViewById(R.id.chat_msg_list_item_content_xw_content);
+			holder.xwivImg = (ImageView) convertView.findViewById(R.id.chat_msg_list_item_content_xw_img);
+			holder.lyNews = (LinearLayout) convertView.findViewById(R.id.chat_msg_list_item_content_xw);
+			holder.message = message;
+			convertView.setTag(holder);
+			holder.lyNews.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					System.out.println("Click PublishMsg");
+					Intent intent = new Intent();
+					intent.setClass(context, Wap_Activity.class);
+					intent.putExtra("wap_url", message.getWap_url());
+					intent.putExtra("wap_name", "股涨咨询");
+					context.startActivity(intent);
+				}
+			});
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+
+		holder.tvSendTime.setText(message.getDate());
+		holder.xwtvTitle.setText(message.getTitle());
+		holder.xwtvContent.setText(message.getContent());
+		Instance.imageLoader.displayImage(message.getImg_url(), holder.xwivImg, Instance.new_s_options);
+
+		Instance.imageLoader.displayImage(message.getHeader(), holder.ivHeader, Instance.user_options);
+		// Instance.imageLoader.displayImage(Configs.BASE_URL
+		// + message.getUserInfo()..replace('\\', '/'),
+		// holder.ivHeader, Instance.options);
+		// holder.ivHeader.setBackgroundResource(R.drawable.driving_mode_group_header_icon4);
+		return convertView;
+	}
+
+	static class ViewHolder {
+		public TextView tvSendTime;
+		public TextView tvContent;
+		public ImageView ivHeader;
+		public LinearLayout lyVoice;
+		public LinearLayout lyNews;
+		public TextView xwtvTitle;
+		public TextView xwtvContent;
+		public ImageView xwivImg;
+		public int direction;
+		public PublishMessage message;
+	}
+
+}

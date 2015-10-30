@@ -1,0 +1,126 @@
+package com.sxit.activity.register;
+
+import lnpdit.lntv.tradingtime.R;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.usersetting.UserSetting_Name_Activity;
+import com.sxit.activity.usersetting.UserSetting_Password_Activity;
+import com.sxit.activity.usersetting.UserSetting_Sex_Activity;
+import com.sxit.http.SoapRes;
+import com.sxit.utils.SOAP_UTILS;
+import com.sxit.utils.Utils;
+
+/**
+ * 注册新用户
+ * 
+ * @author huanyu 类名称：Register_Activity 创建时间:2014-11-7 下午2:51:16
+ */
+public class Register_Activity extends BaseActivity {
+	private ImageView img_back;
+	private AutoCompleteTextView actv_admin, actv_password, actv_password_again, actv_phone;// 昵称，设置密码，再次输入，输入手机
+	private TextView tv_city, tv_age, tv_age_bottom;// 城市，股龄
+	private Button bt_submit;// 提交
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_register);
+		this.isParentActivity = false;
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		actv_admin = (AutoCompleteTextView) findViewById(R.id.actv_admin);
+		actv_password = (AutoCompleteTextView) findViewById(R.id.actv_password);
+		actv_password_again = (AutoCompleteTextView) findViewById(R.id.actv_password_again);
+		actv_phone = (AutoCompleteTextView) findViewById(R.id.actv_phone);
+		tv_city = (TextView) findViewById(R.id.tv_city);
+		tv_age = (TextView) findViewById(R.id.tv_age);
+		tv_age_bottom = (TextView) findViewById(R.id.tv_age_bottom);
+		bt_submit = (Button) findViewById(R.id.bt_submit);
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		bt_submit.setOnClickListener(this);
+		tv_city.setOnClickListener(this);
+		tv_age.setOnClickListener(this);
+		tv_age_bottom.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		case R.id.bt_submit:
+			Object[] property_va = { "sim", "name", "password", "realName", "sex", "imei", "province", "city", "stockAge", "stockStyle" };
+			soapService.userRegistered(property_va);
+			break;
+		case R.id.tv_city:
+			intent.setClass(Register_Activity.this, City_Activity.class);
+			startActivity(intent);
+			break;
+		case R.id.tv_age:
+			intent.setClass(Register_Activity.this, Age_Activity.class);
+			startActivity(intent);
+			break;
+		case R.id.tv_age_bottom:
+			intent.setClass(Register_Activity.this, AgeLine_Activity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	public void onEvent(SoapRes res) {
+		if (res.getCode().equals(SOAP_UTILS.METHOD.USERREGISTERED)) {
+			System.out.println("------------" + res.getObj().toString());
+		}
+	}
+
+	/**
+	 * 
+	 * @param res
+	 */
+	public void onEvent(String... str) {
+		for (String name : str) {
+			if (name.equals(City_Activity.class.getName())) {
+				tv_city.setText(str[1]);
+			}
+			if (name.equals(Age_Activity.class.getName())) {
+				tv_age.setText(str[1]);
+			}
+			if (name.equals(AgeLine_Activity.class.getName())) {
+				tv_age_bottom.setText(str[1]);
+			}
+		}
+	}
+}

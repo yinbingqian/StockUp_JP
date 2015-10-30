@@ -1,0 +1,95 @@
+package com.sxit.activity.register;
+
+import lnpdit.lntv.tradingtime.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.register.adapter.Age_Adapter;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.Utils;
+/**
+ * 省
+ * @author huanyu	
+ * 类名称：Province_Activity   
+ * 创建时间:2014-11-11 下午1:22:54
+ */
+public class Province_Activity extends BaseActivity{
+	private ImageView img_back;// back
+	private ListView list_province;
+	private String[] provinces;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_province);
+		this.isParentActivity = false;
+		EventCache.opAnswerEvent.unregister(this);
+		EventCache.opAnswerEvent.register(this);
+		JSONArray array = Utils.getProvinces(this);
+		provinces = new String[array.length()];
+		for(int i = 0;i < array.length();i++){
+			try {
+				provinces[i] = array.getJSONObject(i).getString("name");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		initView();
+		setListeners();
+	}
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);		
+		list_province = (ListView) findViewById(R.id.list_province);
+		list_province.setAdapter(new Age_Adapter(this, provinces));
+	}
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+	}
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		EventCache.opAnswerEvent.unregister(this);
+	}
+
+	/**
+	 * radio点击回调
+	 * 
+	 * @param time
+	 *            选中时间
+	 */
+	public void onEvent(String province) {
+		intent.setClass(this, CityNew_Activity.class);
+		intent.putExtra("province", province);
+		startActivity(intent);
+		finish();
+	}
+}

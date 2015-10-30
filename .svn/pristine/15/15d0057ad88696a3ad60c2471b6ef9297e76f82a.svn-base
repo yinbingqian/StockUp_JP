@@ -1,0 +1,6 @@
+package com.sxit.config;
+
+public class Configs {
+	public static String BASE_URL = "";
+
+}

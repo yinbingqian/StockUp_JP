@@ -1,0 +1,164 @@
+package com.sxit.utils;
+
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import lnpdit.lntv.tradingtime.R;
+
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.sxit.entity.city.City;
+
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import android.widget.Toast;
+
+/**
+ * 工具类
+ * 
+ * @author huanyu 类名称：Utils 创建时间:2014-10-26 下午11:15:47
+ */
+public class Utils {
+	public static Toast toast;
+
+	/**
+	 * 消除Toast显示重复
+	 * 
+	 * @param context
+	 * @param msg
+	 *            提示语
+	 */
+	public static void showTextToast(Context context, String msg) {
+		if (toast == null) {
+			toast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_LONG);
+		} else {
+			toast.setText(msg);
+		}
+		toast.show();
+	}
+
+	public static String getImei(Context context) {
+		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		return telephonyManager.getDeviceId();
+	}
+
+	public static String getSystemDate() {
+		SimpleDateFormat dateformat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a1 = dateformat1.format(new java.util.Date());
+		return a1;
+	}
+
+	/**
+	 * 获取汉子首字母
+	 * 
+	 * @param chines
+	 * @return
+	 */
+	public static String converterToFirstSpell(String chines) {
+		String pinyinName = "";
+		char[] nameChar = chines.toCharArray();
+		HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
+		defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+		defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+		for (int i = 0; i < nameChar.length; i++) {
+			if (nameChar[i] > 128) {
+				try {
+					pinyinName += PinyinHelper.toHanyuPinyinStringArray(nameChar[i], defaultFormat)[0].charAt(0);
+				} catch (BadHanyuPinyinOutputFormatCombination e) {
+					e.printStackTrace();
+				}
+			} else {
+				pinyinName += nameChar[i];
+			}
+		}
+		return pinyinName;
+	}
+
+	/**
+	 * raw下文件读取
+	 * 
+	 * @param context
+	 * @param res
+	 * @return
+	 */
+	public static JSONObject getObject(Context context, int res) {
+		try {
+			InputStream is = context.getResources().openRawResource(res);
+			byte[] buffer = new byte[is.available()];
+			is.read(buffer);
+			String json = new String(buffer, "UTF-8");
+			// 将字符串json转换为json对象，以便于取出数据
+			JSONObject jsonObject = new JSONObject(json);
+			return jsonObject;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static JSONArray getProvinces(Context context) {
+		// List<String> provinces = new ArrayList<String>();
+		String json = getObject(context, R.raw.province_city).toString();
+		JSONObject jo = getObject(context, R.raw.province_city);
+		JSONArray jsonArray;
+		try {
+			jsonArray = jo.getJSONArray("provinces");
+			return jsonArray;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		// try {
+		// jsonArray = jo.getJSONArray("provinces");
+		// for (int i = 0; i < jsonArray.length(); i++) {
+		// JSONObject province = (JSONObject) jsonArray.get(i);
+		// String pStr = province.get("name").toString();
+		// System.out.println(">>>>   " + pStr);
+		// // provinces.add(pStr);
+		// }
+		// // System.out.println(">>> province city json :" + jsonArray);
+		// } catch (JSONException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+	}
+
+	public static List<String> getCitys(String province, JSONArray jsonArray) {
+		List<String> citys = new ArrayList<String>();
+		JSONArray city_jsonArray = null;
+		JSONObject jo = null;
+		for (int i = 0; i < jsonArray.length(); i++) {
+			try {
+				jo = (JSONObject) jsonArray.get(i);
+				if (jo.getString("name").toString().equals(province)) {
+					city_jsonArray = (JSONArray) jo.get("citys");
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		for (int j = 0; j < city_jsonArray.length(); j++) {
+			try {
+				citys.add(city_jsonArray.get(j).toString());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println(">>> city length : " + citys.size());
+		return citys;
+	}
+
+}

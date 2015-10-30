@@ -1,0 +1,76 @@
+package com.sxit.activity.adviser.th.item.bean;
+
+/**
+ * 提问 bean
+ * 
+ * @author huanyu 类名称：AskQuestion_ListBean 创建时间:2014-10-27 下午8:38:17
+ */
+public class Question_ListBean {
+	private int imgUrl;
+	private String name;
+	private String answerState;// 问题状态 0：提问中 1：已解答
+	private String startTime;// 提问时间
+	private String endTime;// 结束时间
+	private String content;// 内容
+	private String money;// 赏金
+//	private String answerNum;// 回答次数
+
+	public int getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(int imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAnswerState() {
+		return answerState;
+	}
+
+	public void setAnswerState(String answerState) {
+		this.answerState = answerState;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
+	}
+
+
+
+}

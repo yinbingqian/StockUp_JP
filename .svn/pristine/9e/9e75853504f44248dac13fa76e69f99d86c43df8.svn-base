@@ -1,0 +1,179 @@
+package com.sxit.http;
+
+import java.util.List;
+
+import com.sxit.entity.anwser.Anwser;
+
+/**
+ * 
+ * @author huanyu 类名称：ISoapService 创建时间:2014-11-4 下午7:08:50
+ */
+public interface ISoapService {
+	/**
+	 * 分析师登陆信息--用户名|密码
+	 * 
+	 * @param property_va
+	 */
+	void adminLogin(Object[] property_va);
+
+	/**
+	 * 问答回复信息添加
+	 * 
+	 * @param property_va
+	 */
+	void communReplyAdd(Object[] property_va);
+
+	/**
+	 * 问答信息添加
+	 * 
+	 * @param property_va
+	 */
+	void communicationAdd(Object[] property_va);
+
+	/**
+	 * 分析师列表
+	 * 
+	 * @param property_va
+	 */
+	void getAdmin(Object[] property_va);
+
+	/**
+	 * 返回栏目信息
+	 * 
+	 * @param property_va
+	 */
+	void getColumns(Object[] property_va);
+
+	/**
+	 * 问答回复列表
+	 * 
+	 * @param property_va
+	 */
+	void getCommunReply(Object[] property_va,List<Anwser> list);
+
+	/**
+	 * 分析师回复列表
+	 * 
+	 * @param property_va
+	 */
+	void getCommunReplyAna(Object[] property_va);
+
+	/**
+	 * 根据回复id返回详细信息
+	 * 
+	 * @param property_va
+	 */
+	void getCommunReplyByID(Object[] property_va);
+
+	/**
+	 * 问答分类显示
+	 * 
+	 * @param property_va
+	 */
+	void getCommunication(Object[] property_va);
+
+	/**
+	 * 用户个人全部问答列表
+	 * @param property_va
+	 * @param isPage   是否做分页
+	 */
+	void getCommunicationALL(Object[] property_va,boolean isPage);
+
+	/**
+	 * 用户全部问答列表
+	 * 
+	 * @param property_va
+	 */
+	void getCommunicationAllUser(Object[] property_va);
+
+	/**
+	 * 未解决问题
+	 * 
+	 * @param property_va
+	 */
+	void getCommunicationAna(Object[] property_va);
+
+	/**
+	 * 返回新闻内容
+	 * 
+	 * @param property_va
+	 */
+	void getNewsContent(Object[] property_va);
+
+	/**
+	 * 返回最新新闻列表
+	 * 
+	 * @param property_va
+	 */
+	void getNewsTitle(Object[] property_va);
+
+	/**
+	 * 接收消息首页信息 toUser：接收端用户id
+	 * 
+	 * @param property_va
+	 */
+	void interactionHomepage(Object[] property_va);
+
+	/**
+	 * 接收用户获取推送信息 toUser：用户id,historyTime：历史时间
+	 * 
+	 * @param property_va
+	 */
+	void interactionMessage(Object[] property_va);
+
+	/**
+	 * 接收用户获取推送信息 toUser：用户id,historyTime：历史时间,Ana
+	 * 
+	 * @param property_va
+	 */
+	void interactionMessageAna(Object[] property_va);
+
+	/**
+	 * 接收用户获取推送信息 ID：消息id,infoType:1消息/2研报，infoDirection:1用户-分析师/2分析师-用户
+	 * 
+	 * @param property_va
+	 */
+	void interactionMessageByID(Object[] property_va);
+
+	/**
+	 * 互动内容提交，devType:1Android/2iPhone，infoType:1消息/2研报，infoDirection:1用户-分析师/2
+	 * 分析师-用户
+	 * 
+	 * @param property_va
+	 */
+	void interactionSubmit(Object[] property_va);
+
+	/**
+	 * 根据回复id选择最佳答案
+	 * 
+	 * @param property_va
+	 */
+	void updataBestAnswer(Object[] property_va);
+
+	/**
+	 * 用户登录
+	 * 
+	 * @param property_va
+	 */
+	void userInfoLogin(Object[] property_va);
+
+	/**
+	 * 根据回复id选择最佳答案
+	 * 
+	 * @param property_va
+	 */
+	void userPayment(Object[] property_va);
+
+	/**
+	 * 用户注册
+	 * 
+	 * @param property_va
+	 */
+	void userRegistered(Object[] property_va);
+	/**
+	 * 充值密码
+	 * @param property_va
+	 */
+	void userPasswordReset(Object[] property_va);
+
+}

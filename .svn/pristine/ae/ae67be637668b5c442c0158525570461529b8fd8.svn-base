@@ -1,0 +1,98 @@
+package com.sxit.activity.askingquest;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
+import com.sxit.activity.askingquest.adapter.AskingQuestionInfo_Adapter;
+import com.sxit.activity.askingquest.adapter.AskingQuestionInfo_Adapter.ViewHolder_Info;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.customview.MyGridView;
+import lnpdit.lntv.tradingtime.R;
+
+/**
+ * 提问 Acy
+ * 
+ * @author huanyu 类名称：AskingQuestion_Activity 创建时间:2014-10-28 上午10:54:35
+ */
+public class AskingQuestionInfo_Activity extends BaseActivity {
+	private TextView tv_cancel, tv_title, tv_next;
+	private AskingQuestionInfo_Adapter adapter;
+	private MyGridView gridView;
+	private String [] money = new String[]{"0","5","10","20","30","50","75","100"};
+	private ViewHolder_Info holder_info;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_askingquestioninfo);
+		this.isParentActivity = false;
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		tv_cancel = (TextView) findViewById(R.id.tv_cancel);
+		tv_title = (TextView) findViewById(R.id.tv_title);
+		tv_next = (TextView) findViewById(R.id.tv_next);
+		gridView = (MyGridView) findViewById(R.id.gridView);
+		adapter = new AskingQuestionInfo_Adapter(this, money);
+		gridView.setAdapter(adapter);
+	}
+
+	private void setListeners() {
+		tv_next.setOnClickListener(this);
+		tv_cancel.setOnClickListener(this);
+		gridView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				for (int i = 0; i < parent.getCount(); i++) {
+					View v = parent.getChildAt(i);
+					if (position == i) {// 当前选中的Item改变背景颜色
+						view.setBackgroundResource(R.drawable.grid_select);
+						ViewHolder_Info holder = (ViewHolder_Info) view.getTag();
+						holder.tv_money.setTextColor(AskingQuestionInfo_Activity.this.getResources().getColor(R.color.white));
+					} else {
+						v.setBackgroundResource(R.drawable.grid_normal);
+						ViewHolder_Info holder = (ViewHolder_Info) v.getTag();
+						holder.tv_money.setTextColor(AskingQuestionInfo_Activity.this.getResources().getColor(R.color.register_text_color));
+					}
+				}
+				holder_info = (ViewHolder_Info) view.getTag();
+			}
+		});
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv_next:
+			intent.setClass(AskingQuestionInfo_Activity.this,OpAnswerTimeActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.tv_cancel:
+			finish();
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+}

@@ -1,0 +1,87 @@
+package com.sxit.activity.askingquest;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.sxit.activity.askingquest.adapter.OpAnswer_Adapter;
+import com.sxit.activity.base.BaseActivity;
+import lnpdit.lntv.tradingtime.R;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.Utils;
+
+/**
+ * 解答时限 Acy
+ * 
+ * @author huanyu 类名称：OpAnswerTimeActivity 创建时间:2014-10-28 上午11:15:28
+ */
+public class OpAnswerTimeActivity extends BaseActivity {
+	private ImageView img_back;// back
+	private ListView lv_radio;//
+	private String time[] = new String[]{"2小时","4小时","8小时","16小时","24小时","36小时","48小时","72小时"};
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_opanswertime);
+		EventCache.opAnswerEvent.unregister(this);
+		EventCache.opAnswerEvent.register(this);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		lv_radio = (ListView) findViewById(R.id.lv_radio);
+		lv_radio.setAdapter(new OpAnswer_Adapter(this,time));
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+	}
+	/**
+	 * radio点击回调
+	 * @param time 选中时间
+	 */
+	public void onEvent(String time){
+		Utils.showTextToast(this, time);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		EventCache.opAnswerEvent.unregister(this);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			finish();
+		}
+		return true;
+	}
+}

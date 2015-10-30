@@ -1,0 +1,58 @@
+package com.sxit.activity.register;
+
+import lnpdit.lntv.tradingtime.R;
+import android.os.Bundle;
+import android.view.View;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.http.SoapRes;
+
+/**
+ * 城市 Acy
+ * 
+ * @author huanyu 类名称：City_Activity 创建时间:2014-11-7 下午3:05:37
+ */
+public class City_Activity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_city);
+		this.isParentActivity = false;
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+
+	}
+
+	private void setListeners() {
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+}

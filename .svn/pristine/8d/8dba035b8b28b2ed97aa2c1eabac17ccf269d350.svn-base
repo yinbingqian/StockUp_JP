@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">股涨</string>
+    <string name="app_pinyin_name">guzhang</string>
+    <string name="app_welcome_text1">欢迎使用股涨客户端</string>
+    <string name="app_welcome_text2">这里有最新的财经资讯</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="app_res">红心</string>
+    <string name="adviser">吕子乔</string>
+    <string name="defult_cnm">wys</string>
+    <string name="defult_cpw">admin</string>
+    <string name="defult_anm">guzhang</string>
+    <string name="defult_apw">guzhang</string>
+    <!-- TabHost C -->
+    <string name="tabHost_frist">信息</string>
+    <string name="tabHost_second">顾问团</string>
+    <string name="tabHost_thrid">提问</string>
+    <string name="tabHost_fourth">我的空间</string>
+    <!-- TabHost A -->
+    <string name="tabHost_frist_a">互动消息</string>
+    <string name="tabHost_second_a">发布消息</string>
+    <string name="tabHost_thrid_a">问题列表</string>
+    <string name="tabHost_fourth_a">顾问空间</string>
+
+    <!-- 欢迎页 -->
+    <string name="welcome_rigister">注册</string>
+    <string name="welcome_login">登录</string>
+    <string name="welcome_below">随便逛逛</string>
+    <!-- 登录,注销 -->
+    <string name="register_hint_admin">用户名或手机号</string>
+    <string name="register_hint_password">输入口令</string>
+    <string name="register_login">登录</string>
+    <string name="register_submit">提交注册</string>
+    <string name="register_admin">注册新用户</string>
+    <string name="register_password">忘记密码</string>
+    <string name="register_analyst_login">顾问登录</string>
+    <string name="register_analyst">顾问登录</string>
+    <string name="register_customer">投资者登录</string>
+    <string name="register_analyst_c">切换到顾问登录</string>
+    <string name="register_customer_c">切换到投资者登录</string>
+    <string name="register_tv_hint_password">设置密码</string>
+    <string name="register_tv_hint_password_again">再次输入</string>
+    <string name="register_tv_hint_checkpassword">验证密码</string>
+    <string name="registrer_tv_phone">输入手机</string>
+    <string name="register_checkCode">获取验证码</string>
+    <string name="register_protocol">我已阅读股涨用户协议</string>
+    <string name="unlogin">您目前尚未登录</string>
+    <string name="go_login">登录帐号</string>
+    <string name="go_register">注册帐号</string>
+    <string name="analyst_admin">顾问帐号</string>
+    <string name="ananlyst_password">输入口令</string>
+    <string name="nickname">昵称</string>
+    <string name="name">账户名</string>
+    <string name="register_city">所在城市</string>
+    <string name="line">投资风格</string>
+    <string name="sex">性别</string>
+    <string name="editpassword">修改密码</string>
+    <string name="username">用户名</string>
+    <string name="oldpassword">旧密码</string>
+    <string name="newpassword">新密码</string>
+    <string name="enable">确认</string>
+    <!-- 顾问 -->
+    <string name="analyst_title">顾问团队</string>
+    <!-- 提问 -->
+    <string name="no_qeustion">您目前还没有问题等待回答</string>
+    <string name="myqeustion">我要提问</string>
+    <string name="ask_question">提问</string>
+    <string name="ask_title">问答</string>
+    <string name="asking">等待解答中...</string>
+    <string name="answer">已解答...</string>
+    <string name="nextdo">下一步</string>
+    <string name="ask">提问</string>
+    <string name="cancel">取消</string>
+    <string name="opaskingtime">解答时限</string>
+    <string name="ask_sumbit">提交</string>
+    <string name="opasking_button">提交问题</string>
+    <string name="ask_hint">在这里输入您的问题</string>
+    <string name="ask_hint_title">请输入标题</string>
+    <string name="submit_img">上传图片</string>
+    <string name="moneynum">红心数0</string>
+    <string name="how_money">选择悬赏红心数</string>
+    <string name="ask_bottom_msg">提高悬赏红心数，您将获得更细致的回答</string>
+    <string name="mymoney">您当前的红心数量：</string>
+    <string name="getmoney">点此获取红心</string>
+    <string name="answerquestion">解答</string>
+    <string name="answerquestionInfo">解答详情</string>
+    <string name="getanswer">采纳此解答</string>
+    <string name="useanswer">已采纳</string>
+    <!-- 咨询聊天 -->
+    <string name="chat_tip">以上言论仅供参考，请勿直接用于股票投资</string>
+
+    <!-- 个人空间 -->
+
+    <string name="ps_money">红心值</string>
+    <string name="ps_contribute">贡献度</string>
+    <string name="ps_active">活跃度</string>
+
+    <!-- 顾问团 -->
+    <string name="analyst_id">投资顾问</string>
+    <string name="analyst_id_bak">投资顾问	执业编号：</string>
+    <string name="analyst_team">光大证券	资深分析师	沈阳青年大街营业部</string>
+    <string name="analyst_team_msg">东北财经大学经济信息管理系毕业，管理学学士。具有扎实的理论功底，擅长把握趋势波段机会，对大局有良好的把握。</string>
+    <string name="followed">已关注</string>
+    <string name="un_followed">未关注</string>
+    <string name="consultation">向Ta咨询</string>
+
+    <!-- 财经要文 -->
+    <string name="news_title">财经要闻</string>
+    <string name="news_name">沪指放量大涨1.5% 上海自贸区概念股领涨</string>
+    <string name="news_time">09-30 8:30</string>
+    <string name="news_msg">今日，两市小幅高开后震荡上行。11:00过后，两市股指双双拉升，沪指涨逾1%。今日，两市小幅高开后震荡上行。11:00过后，两市股指双双拉升，沪指涨逾百分之一。午后，两市强势冲高，沪指最高涨百分之一点吧。两市成交量持续放大，均突破2000亿。截至收盘，沪指涨百分之一点五，报2373.03点，成交2251亿，深成指涨百分之一点二二，报8086.02点，成交2298亿。</string>
+
+    <!-- 发布消息 -->
+    <string name="publish_msg_with_pic">点击发布图文信息</string>
+    <string name="publish_msg_select_type">选择类别</string>
+    <string name="publish_msg_type_tip">在这里输入您的文字信息</string>
+
+    <!-- 问题列表 -->
+    <string name="question_list_i_answer">我来回答</string>
+    <string name="question_list_send_answer">发送回答</string>
+    <!-- 设置 -->
+    <string name="setting_title">设置</string>
+    <string name="setting_switch_user_lable">切换账号</string>
+    <string name="setting_exit_lable">退出账号</string>
+    <!-- 编辑资料 -->
+    <string name="user_setting_title">编辑资料</string>
+    <string name="user_head">头像</string>
+    <string name="user_name">昵称</string>
+    <string name="user_password">密码</string>
+    <string name="user_sex">性别</string>
+    <string name="user_age">股龄</string>
+    <string name="user_city">城市</string>
+    <string name="province">省</string>
+    <string name="user_style">投资风格</string>
+    <string name="user_edit">编辑资料</string>
+    <string name="user_save">保存</string>
+    <string name="user_name_hint">输入昵称</string>
+    <string name="user_setting_password">设置密码</string>
+    <string name="user_enable_password">再次确认</string>
+    <!-- Jpush -->
+    <string name="jp_hello">Hello World, JPush!</string>
+    <string name="jp_app_name">JPush SDK Demo</string>
+    <string name="jp_tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="jp_alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="jp_style_hint">style为数字</string>
+    <string name="jp_error_style_empty">style不能为空</string>
+    <string name="jp_error_alias_empty">alias不能为空</string>
+    <string name="jp_error_tag_empty">tag不能为空</string>
+    <string name="jp_error_tag_gs_empty">格式不对</string>
+    <string name="jp_error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="jp_logining">程序在后台执行, 请查看日志！</string>
+    <string name="jp_setting_su">设置成功</string>
+
+</resources>

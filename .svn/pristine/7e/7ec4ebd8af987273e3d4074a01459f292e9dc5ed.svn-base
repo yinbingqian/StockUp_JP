@@ -1,0 +1,148 @@
+package com.sxit.activity.th.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sxit.activity.askingquest.AnswerQuestionInfo_Activity;
+import com.sxit.activity.askingquest.AnswerQuestion_Activity;
+import com.sxit.activity.askingquest.AskingQuestionInfo_Activity;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.th.item.adapter.AskQuestion_Adapter;
+import com.sxit.activity.th.item.bean.AskQuestion_ListBean;
+import com.sxit.http.SoapRes;
+import com.sxit.utils.SOAP_UTILS;
+
+import lnpdit.lntv.tradingtime.R;
+
+public class AskQuestion_Activity extends BaseActivity {
+	private TextView tv_asking;// 提问
+	private LinearLayout icl_noask, icl_listView;
+	private Button bt_askQuestion;
+	private int curUI;// 0：提问 1：answer
+	/** ListView **/
+	private PullToRefreshListView listView_askquestion;
+	private ListView listView;
+	private AskQuestion_Adapter adapter;
+	private List<AskQuestion_ListBean> list;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		setContentView(R.layout.activity_askquestion);
+		super.onCreate(savedInstanceState);
+		initView();
+		setListeners();
+		String[] property_va = new String[] { "10", "1", getLoginUser().getUserid() };
+		soapService.getCommunicationALL(property_va);
+	}
+
+	private void initView() {
+		icl_noask = (LinearLayout) findViewById(R.id.icl_noask);
+		icl_listView = (LinearLayout) findViewById(R.id.icl_listView);
+		bt_askQuestion = (Button) findViewById(R.id.bt_askQuestion);
+		listView_askquestion = (PullToRefreshListView) findViewById(R.id.listView_askquestion);
+		listView = listView_askquestion.getRefreshableView();
+		tv_asking = (TextView) findViewById(R.id.tv_asking);
+	}
+
+	private void setListeners() {
+		bt_askQuestion.setOnClickListener(this);
+		tv_asking.setOnClickListener(this);
+		icl_noask.setOnClickListener(null);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if (list.get(position - 1).getStatus().equals("0")) {
+					intent.setClass(AskQuestion_Activity.this, AnswerQuestion_Activity.class);
+					startActivity(intent);
+				} else {
+					intent.setClass(AskQuestion_Activity.this, AnswerQuestionInfo_Activity.class);
+					intent.putExtra("isCheck", true);
+					startActivity(intent);
+				}
+			}
+		});
+	}
+
+	@Override
+	public void onClick(View v) {
+		super.onClick(v);
+		switch (v.getId()) {
+		case R.id.bt_askQuestion:
+			intent.setClass(AskQuestion_Activity.this, AskingQuestionInfo_Activity.class);
+			startActivity(intent);
+			break;
+		case R.id.tv_asking:
+			intent.setClass(AskQuestion_Activity.this, AskingQuestionInfo_Activity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 切换UI状态
+	 */
+	private void changLoginState() {
+		switch (curUI) {
+		case 0:
+			icl_listView.setVisibility(View.GONE);
+			icl_noask.setVisibility(View.VISIBLE);
+			break;
+		case 1:
+			icl_listView.setVisibility(View.VISIBLE);
+			icl_noask.setVisibility(View.GONE);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	public void onEvent(SoapRes obj) {
+		super.onEvent(obj);
+		if (obj.getCode().equals(SOAP_UTILS.METHOD.GETCOMMUNICATIONALL)) {
+			list = (List<AskQuestion_ListBean>) obj.getObj();
+			if (list.size() != 0) {
+				adapter = new AskQuestion_Adapter(this, list);
+				listView.setAdapter(adapter);
+				curUI = 1;
+				changLoginState();
+			}
+		}
+	}
+
+	@Override
+	public void onEventMainThread(String method) {
+		if(method.equals(SOAP_UTILS.METHOD.GETCOMMUNICATIONALL)){
+			String[] property_va = new String[] { "10", "1", getLoginUser().getUserid() };
+			soapService.getCommunicationALL(property_va);
+		}
+	}
+
+}

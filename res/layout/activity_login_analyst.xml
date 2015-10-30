@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_analyst_admin"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="@string/analyst_admin"
+            android:textSize="@dimen/textsize18" 
+            android:inputType="textNoSuggestions"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_analyst_password"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="@string/ananlyst_password"
+            android:textSize="@dimen/textsize18" 
+            android:inputType="textNoSuggestions"/>
+
+        <Button
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/title_bg"
+            android:text="@string/register_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:orientation="horizontal" >
+
+       <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/register_password"
+                android:textColor="@color/register_text_color"
+                android:textSize="@dimen/textsize18" />  
+               
+        </RelativeLayout>
+   
+
+</LinearLayout>

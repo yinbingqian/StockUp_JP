@@ -1,0 +1,115 @@
+package com.sxit.activity.usersetting;
+
+import lnpdit.lntv.tradingtime.R;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.register.adapter.Age_Adapter;
+import com.sxit.entity.LoginUser;
+import com.sxit.http.SoapRes;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.SOAP_UTILS;
+import com.sxit.utils.Utils;
+
+/**
+ * 股龄线路 Acy
+ * 
+ * @author huanyu 类名称：AgeLine_Activity 创建时间:2014-11-7 下午3:15:49
+ */
+public class Stock_Style_Activity extends BaseActivity {
+	private ImageView img_back;// back
+	private ListView lv_ageline;
+	private String line[] = new String[] { "长线", "短线", "中长" };
+	private String style;
+	private TextView tv_save;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_setting_ageline);
+		this.isParentActivity = false;
+		EventCache.opAnswerEvent.unregister(this);
+		EventCache.opAnswerEvent.register(this);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		tv_save = (TextView) findViewById(R.id.tv_save);
+		lv_ageline = (ListView) findViewById(R.id.lv_ageline);
+		lv_ageline.setAdapter(new Age_Adapter(this, line));
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		tv_save.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		case R.id.tv_save:
+			if(style == null){
+				Utils.showTextToast(this, "请选择投资风格");
+				break;
+			}
+			String[] property_va = new String[] { getLoginUser().getUserid(), "4", style };
+			soapService.userEditor(property_va);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		EventCache.opAnswerEvent.unregister(this);
+		super.onDestroy();
+	}
+
+	/**
+	 * radio点击回调
+	 * 
+	 * @param time
+	 *            选中时间
+	 */
+	public void onEvent(String style) {
+		this.style = style;
+	}
+	public void onEvent(SoapRes res) {
+		if (res.getCode().equals(SOAP_UTILS.METHOD.USEREDITOR)) {
+			if (res.getObj() != null) {
+				if (res.getObj().toString().equals("true")) {
+					Utils.showTextToast(this, getString(R.string.edit_success));
+					LoginUser user = getLoginUser();
+					user.setStock_style(style);
+					setLoginUser(user);
+					EventCache.commandActivity.post(new String[] { this.getClass().getName(), style });
+					finish();
+				} else {
+					Utils.showTextToast(this, getString(R.string.edit_password_fail));
+				}
+			} else {
+				Utils.showTextToast(this, getString(R.string.edit_password_fail));
+			}
+		}
+	}
+}

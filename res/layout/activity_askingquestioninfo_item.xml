@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/grid_normal"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height32"
+        android:textColor="@color/register_text_color"
+        android:gravity="center"
+        android:textSize="@dimen/textsize16" >
+    </TextView>
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+package com.sxit.activity.usersetting;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import lnpdit.lntv.tradingtime.R;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.usersetting.adapter.UserSetting_Sex_Adapter;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.Utils;
+
+/**
+ * 性别
+ * 
+ * @author huanyu 类名称：UserSetting_Sex_Activity 创建时间:2014-11-3 上午11:54:40
+ */
+public class UserSetting_Sex_Activity extends BaseActivity {
+	private ImageView img_back;
+	private String sex;
+	private ListView lv_radio;//
+	private String sexName[] = new String[] { "男", "女" };
+	private List<Boolean> list = new ArrayList<Boolean>();
+	private UserSetting_Sex_Adapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_usersetting_sex);
+		intent = getIntent();
+		sex = intent.getStringExtra("sex");
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		lv_radio = (ListView) findViewById(R.id.lv_radio);
+		// listView 初始化
+		for (int i = 0; i < sexName.length; i++) {
+			if (sex.equals(sexName[i])) {
+				list.add(true);
+			} else {
+				list.add(false);
+			}
+		}
+		adapter = new UserSetting_Sex_Adapter(this, sexName, list);
+		lv_radio.setAdapter(adapter);
+
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			callBack();
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * radio点击回调
+	 * 
+	 * @param time
+	 *            选中时间
+	 */
+	public void onEvent(String sex) {
+		Utils.showTextToast(this, sex);
+		this.sex = sex;
+	}
+	/**
+	 * 返回回调
+	 */
+	public void callBack() {
+		EventCache.commandActivity.post(new String[] {UserSetting_Sex_Activity.this.getClass().getName(), sex });
+		finish();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			callBack();
+		}
+		return true;
+	}
+}

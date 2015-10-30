@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/register_bg"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/no_qeustion"
+        android:textSize="@dimen/textsize20" />
+
+    <Button
+        android:id="@+id/bt_askQuestion"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="280dp"
+        android:layout_height="@dimen/normal_height42"
+        android:layout_marginTop="@dimen/marging20"
+        android:background="@drawable/unlogin_btn_bg_selector_1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="@string/myqeustion"
+        android:textSize="@dimen/textsize20" />
+
+</LinearLayout>

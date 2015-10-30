@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 黑白红 -->
+    <color name="blcak">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#CC0000</color>
+    <!-- 黑灰 -->
+    <color name="blcak_grey">#3C3C3C</color>
+    <!-- 灰 -->
+    <color name="simple_grey">#BFBFBF</color>
+    <color name="grey">#808080</color>
+    <color name="deep_grey">#404040</color>
+    <color name="grey_s">#FAFAFA</color>
+    <color name="font_grey1">#999999</color>
+    <color name="font_grey2">#666666</color>
+    <color name="font_grey3">#CCCCCC</color>
+    <!-- 蓝 -->
+    <color name="simple_blue">#6699EE</color>
+    <color name="blue">#3366CC</color>
+    <color name="deep_blue">#003399</color>
+    <!-- 绿 -->
+    <color name="simple_green">#99CC33</color>
+    <color name="green">#00CC00</color>
+    <color name="deep_green">#FF6600</color>
+    <!-- 黄 -->
+    <color name="simple_yellow">#FFCC00</color>
+    <color name="yellow">#FF9900</color>
+    <color name="deep_yellow">#FF6600</color>
+    <!-- progressdialog字体颜色 蓝 -->
+    <color name="progress_msg_text_color_blue">#0159A0</color>
+    <!-- progressdialog字体颜色 深灰 -->
+    <color name="progress_msg_text_dark_grey">#333333</color>
+    <!-- 欢迎页 -->
+    <color name="welcome_textColor">#333333</color>
+    <color name="text_color">#990000</color>
+    <!-- 注册背景 -->
+    <color name="register_bg">#FAFAFA</color>
+    <color name="register_text_color">#666666</color>
+    <color name="register_checkcode_color">#616161</color>
+    <color name="register_protocol_color">#959595</color>
+    <!-- 信息 -->
+    <color name="divider">#C9C9C9</color>
+    <color name="listview_item_tv_color">#959595</color>
+    <!-- 提问 -->
+    <color name="question_asking">#FF9700</color>
+    <color name="question_answer">#980000</color>
+    <color name="question_text_color">#999999</color>
+    <color name="question_ll_bg">#EDEDED</color>
+    <!-- 编辑资料 -->
+    <color name="lines">#D0D0D0</color>
+    <color name="save">#FFCE00</color>
+
+</resources>

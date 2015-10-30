@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_analystImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/marging20"
+                android:src="@drawable/item_logo4" />
+
+            <TextView
+                android:id="@+id/tv_analystName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/marging10"
+                android:gravity="center"
+                android:text="asd"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/textsize23"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marging10"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/marging10"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="@string/analyst_id"
+                    android:textColor="@color/question_text_color"
+                    android:textSize="@dimen/textsize17" />
+<!-- 
+                <TextView
+                    android:id="@+id/tv_analystName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/marging10"
+                    android:layout_weight="1.0"
+                    android:gravity="left"
+                    android:text="S21221325354"
+                    android:textColor="@color/welcome_textColor"
+                    android:textSize="@dimen/textsize17"
+                    android:visibility="gone" />
+                     -->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_analystOrg_and_ptitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/analyst_team"
+                android:textColor="@color/welcome_textColor"
+                android:textSize="@dimen/textsize18" />
+
+            <TextView
+                android:id="@+id/tv_analystSpecialty"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:text="@string/analyst_team"
+                android:textColor="@color/deep_yellow"
+                android:textSize="@dimen/textsize18" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="2px"
+                android:layout_marginLeft="@dimen/marging10"
+                android:layout_marginRight="@dimen/marging10"
+                android:layout_marginTop="@dimen/marging15"
+                android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tv_analystResume"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marging10"
+                android:layout_marginRight="@dimen/marging10"
+                android:layout_marginTop="@dimen/marging10"
+                android:ems="10"
+                android:text="@string/analyst_team_msg"
+                android:textColor="@color/question_text_color"
+                android:textSize="@dimen/textsize19" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="@dimen/marging15"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marging15"
+                android:orientation="horizontal" >
+
+                <ToggleButton
+                    android:id="@+id/tb_followed"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/normal_height42"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/marging10"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/follow_btn_bg_selector_1"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textOff="@string/un_followed"
+                    android:textOn="@string/followed"
+                    android:textSize="@dimen/textsize17" 
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/bt_ask"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/normal_height42"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/marging10"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/consultation"
+                    android:gravity="center"
+                    android:text="@string/consultation"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize17" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text=""
+                android:textColor="@color/question_text_color"
+                android:textSize="@dimen/textsize19"  />
+             
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="@dimen/marging15"
+                android:background="@color/divider" />
+        </LinearLayout>
+</RelativeLayout>

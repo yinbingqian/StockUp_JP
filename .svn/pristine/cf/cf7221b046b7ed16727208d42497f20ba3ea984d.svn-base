@@ -1,0 +1,163 @@
+package com.sxit.activity.askingquest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lnpdit.lntv.tradingtime.R;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.sxit.activity.askingquest.adapter.AnswerQuestion_Adapter;
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.th.item.bean.AskQuestion_ListBean;
+import com.sxit.entity.Adviser;
+import com.sxit.entity.ChatMessage;
+import com.sxit.entity.UserInfo;
+
+/**
+ * 解答 Acy
+ * 
+ * @author huanyu 类名称：AnswerQuestion_Activity 创建时间:2014-10-29 下午5:52:58
+ */
+public class AnswerQuestion_Activity extends BaseActivity {
+	private ListView listView;
+	private ImageView img_back;
+	private UserInfo ui = new UserInfo();
+	private ChatMessage cm = new ChatMessage();;
+	private List<ChatMessage> messages = new ArrayList<ChatMessage>();
+	AnswerQuestion_Adapter adapter;
+	private Button bt_selectanswer;// 选中方案
+	private int resultPosition;
+	private AskQuestion_ListBean bean;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.activity_answer_list_layout);
+		this.isParentActivity = false;
+		intent = getIntent();
+		bean = (AskQuestion_ListBean) intent.getSerializableExtra("AskQuestion_ListBean");
+		System.out.println("---------id ="+bean.getId());
+		initView();
+		setListeners();
+		initTestData();
+	}
+
+	private void initView() {
+		listView = (ListView) findViewById(R.id.listView);
+		img_back = (ImageView) findViewById(R.id.img_back);
+		bt_selectanswer = (Button) findViewById(R.id.bt_selectanswer);
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		bt_selectanswer.setOnClickListener(this);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if (position != 0) {
+					resultPosition = position;
+					intent.setClass(AnswerQuestion_Activity.this, AnswerQuestionInfo_Activity.class);
+					intent.putExtra("isCheck", adapter.mapCk.get(position));
+					startActivity(intent);
+				}
+			}
+		});
+	}
+
+
+	private void initTestData() {
+		ui.setUserheader("http://www.12371.gov.cn/UploadFiles/dhrw/2011/12/201112121424234996.jpg");
+		ui.setUserid("122001");
+		ui.setUsername("王大壮");
+		cm.setContent3_title("广日股份2014年前三季净增25% 新项目逐步发力");
+		cm.setContent3_img("http://img1.money.126.net/chart/hs/kline/day/90/0600894.png");
+		cm.setContent3_content("10月28日晚间，广日股份发布2014年三季度业绩报告。报告显示，截止2014年9月30日，公司今年以来实现营业收入33.66亿元，与去年同期相比增长15.07%；归属于上市公司股东的净利润5.05亿元，同比增长25.02%；每股收益为0.62元。");
+		cm.setContent3_url("http://money.163.com/14/1028/22/A9M6SIHB00253B0H.html");
+		// cm.setContent3_url("http://m.money.163.com/news/14/1028/22/A9M6SIHB00253B0H.html#1a01");
+		cm.setMsg_direction(0);
+		cm.setMsg_send_date("2014-10-28");
+		cm.setMsg_type(2);
+		cm.setLogin_id("122001");
+		cm.setStatus(1);
+		cm.setSender_id("134221");
+		cm.setUserinfo(ui);
+		messages.add(cm);
+
+		ui = new UserInfo();
+		ui.setUserheader("http://www.12371.gov.cn/UploadFiles/dhrw/2011/12/201112121424234996.jpg");
+		ui.setUserid("122001");
+		ui.setUsername("王大壮");
+		cm = new ChatMessage();
+		cm.setContent1("德银料沪港通今年不会开通 保守预计2015年获批,10月28日晚间，广日股份发布2014年三季度业绩报告。报告显示，截止2014年9月30日，公司今年以来实现营业收入33.66亿元，与去年同期相比增长15.07%；归属于上市公司股东的净利润5.05亿元，同比增长25.02%；每股收益为0.62元。");
+		cm.setMsg_direction(1);
+		cm.setMsg_send_date("2014-10-28");
+		cm.setMsg_type(0);
+		cm.setLogin_id("122001");
+		cm.setStatus(1);
+		cm.setSender_id("134221");
+		cm.setUserinfo(ui);
+		messages.add(cm);
+
+		ui = new UserInfo();
+		ui.setUserheader("http://www.12371.gov.cn/UploadFiles/dhrw/2011/12/201112121424234996.jpg");
+		ui.setUserid("122001");
+		ui.setUsername("王大壮");
+		cm = new ChatMessage();
+		cm.setContent1("德银料沪港通今年不会开通 保守预计2015年获批,10月28日晚间，广日股份发布2014年三季度业绩报告。报告显示，截止2014年9月30日，公司今年以来实现营业收入33.66亿元，与去年同期相比增长15.07%；归属于上市公司股东的净利润5.05亿元，同比增长25.02%；每股收益为0.62元。");
+		cm.setMsg_direction(1);
+		cm.setMsg_send_date("2014-10-28");
+		cm.setMsg_type(0);
+		cm.setLogin_id("122001");
+		cm.setStatus(1);
+		cm.setSender_id("134221");
+		cm.setUserinfo(ui);
+		messages.add(cm);
+
+		adapter = new AnswerQuestion_Adapter(AnswerQuestion_Activity.this, messages);
+		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			this.finish();
+			System.out.println("back");
+			break;
+		case R.id.bt_selectanswer:
+
+			break;
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+	public void onEvent(String callisCheck) {
+		if (callisCheck.equals("0")) {
+			adapter.changCk(resultPosition);
+		}
+	}
+}

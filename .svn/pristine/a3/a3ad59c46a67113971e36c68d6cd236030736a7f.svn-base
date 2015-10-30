@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_username"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="@string/register_hint_admin"
+            android:text="@string/defult_cnm"
+            android:textSize="@dimen/textsize18" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_password"
+            style="@style/login_edittext_style"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="@string/register_hint_password"
+            android:password="true"
+             android:text="@string/defult_cpw"
+            android:textSize="@dimen/textsize18" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/dark_red_btn_bg_selector_1"
+            android:text="@string/register_login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/marging20"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_admin"
+                android:textColor="@color/register_text_color"
+                android:textSize="@dimen/textsize18" />
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/register_password"
+                android:textColor="@color/register_text_color"
+                android:textSize="@dimen/textsize18" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,99 @@
+package com.sxit.activity.usersetting;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sxit.activity.base.BaseActivity;
+import lnpdit.lntv.tradingtime.R;
+import com.sxit.utils.EventCache;
+import com.sxit.utils.Utils;
+
+/**
+ * 密码
+ * 
+ * @author huanyu 类名称：UserSetting_Password_Activity 创建时间:2014-11-3 上午11:54:35
+ */
+public class UserSetting_Password_Activity extends BaseActivity {
+	private ImageView img_back;
+	private String password;
+	private TextView tv_save, tv_edit;
+	private AutoCompleteTextView actv_password_enable,actv_password;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_usersetting_password);
+		intent = getIntent();
+		password = intent.getStringExtra("password");
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		tv_edit = (TextView) findViewById(R.id.tv_edit);
+		tv_save = (TextView) findViewById(R.id.tv_save);
+		actv_password_enable = (AutoCompleteTextView) findViewById(R.id.actv_password_enable);
+		actv_password = (AutoCompleteTextView) findViewById(R.id.actv_password);
+		actv_password.setEnabled(true);
+		actv_password_enable.setEnabled(true);
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		tv_edit.setOnClickListener(this);
+		tv_save.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		case R.id.tv_edit:
+			finish();
+//			actv_password.setEnabled(true);
+//			actv_password_enable.setEnabled(true);
+			break;
+		case R.id.tv_save:
+			if(actv_password.getText().toString().equals(actv_password_enable.getText().toString())){
+				actv_password.setEnabled(false);
+				actv_password_enable.setEnabled(false);
+				EventCache.commandActivity.post(new String[]{this.getClass().getName(),actv_password_enable.getText().toString()});
+			}else{
+				Utils.showTextToast(UserSetting_Password_Activity.this, getString(R.string.check_error));
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			finish();
+		}
+		return true;
+	}
+}

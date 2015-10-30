@@ -1,0 +1,73 @@
+package com.sxit.activity.th.item.adapter;
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sxit.activity.th.item.bean.Analyst_ListBean;
+import com.sxit.entity.Adviser;
+import com.sxit.instance.Instance;
+import com.sxit.utils.SOAP_UTILS;
+
+import lnpdit.lntv.tradingtime.R;
+
+/**
+ * 分析师
+ * 
+ * @author huanyu 类名称：Analyst_Adapter 创建时间:2014-10-27 下午6:34:46
+ */
+public class Analyst_oldversionAdapter extends BaseAdapter {
+	private Context context;
+	private List<Adviser> list;
+
+	public Analyst_oldversionAdapter(Context context, List<Adviser> list) {
+		this.context = context;
+		this.list = list;
+	}
+
+	@Override
+	public int getCount() {
+		return list.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return list.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder viewHolder = null;
+		if (convertView == null) {
+			convertView = LayoutInflater.from(context).inflate(R.layout.activity_analyst_item, null);
+			viewHolder = new ViewHolder();
+			viewHolder.img_icon = (ImageView) convertView.findViewById(R.id.img_icon);
+			viewHolder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
+			viewHolder.tv_analystteam = (TextView) convertView.findViewById(R.id.tv_analystteam);
+			convertView.setTag(viewHolder);
+		} else {
+			viewHolder = (ViewHolder) convertView.getTag();
+		}
+		Instance.imageLoader.displayImage(SOAP_UTILS.HEADER_URL+list.get(position).getHeadpic(), viewHolder.img_icon, Instance.user_options);
+		viewHolder.tv_name.setText(list.get(position).getRealname());
+		viewHolder.tv_analystteam.setText(list.get(position).getOrgname()+"  "+list.get(position).getPtitle());
+		return convertView;
+	}
+
+	static class ViewHolder {
+		public ImageView img_icon;// icon
+		public TextView tv_name;// 名称
+		public TextView tv_analystteam;// 组织 职称
+	}
+}

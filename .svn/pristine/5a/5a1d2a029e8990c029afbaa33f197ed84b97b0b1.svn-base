@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/register_bg"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height54"
+        android:background="@drawable/title_bg"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/normal_height54"
+            android:layout_height="@dimen/normal_height54"
+            android:layout_gravity="center"
+            android:background="@drawable/head_background_select"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/answerquestionInfo"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize23"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marging10" >
+
+                <ImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="@dimen/normal_height54"
+                    android:layout_height="@dimen/normal_height54"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/item_logo3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marging10"
+                    android:layout_toRightOf="@id/img_icon"
+                    android:text="王周俊"
+                    android:textColor="@color/blcak"
+                    android:textSize="@dimen/textsize18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="21:30做了解答"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="@dimen/textsize15" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_time"
+                    android:layout_margin="@dimen/marging10"
+                    android:layout_toRightOf="@id/img_icon"
+                    android:text="东北证券	首席分析师"
+                    android:textColor="@color/font_grey1"
+                    android:textSize="@dimen/textsize17" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:orientation="vertical"
+                android:padding="@dimen/marging10" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:text="当前中国宏观经济形势最关键的问题是什么？是风险利率过高。这产生了两个负面效果，一是抑制企利润和新增长模式成长(估计层面)，二是没有增量资金来到股市(资产配至层面)，居民通过购买信托和理财向旧增长模式输血，5年大熊市。"
+                    android:textColor="@color/blcak"
+                    android:textSize="@dimen/textsize17" />
+
+                <ImageView
+                    android:layout_marginTop="@dimen/marging10"
+                    android:id="@+id/answerInfo_img"
+                    android:layout_width="fill_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/marging5"
+        android:background="@drawable/grid_normal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bt_check"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/dark_red_btn_bg_selector_1"
+            android:text="@string/getanswer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize18" />
+    </LinearLayout>
+
+</LinearLayout>

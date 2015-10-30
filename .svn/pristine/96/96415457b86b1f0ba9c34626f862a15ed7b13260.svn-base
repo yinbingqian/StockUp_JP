@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/mm_listitem"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="8dp" >
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="@dimen/normal_height72"
+        android:layout_height="@dimen/normal_height72"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/item_logo" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/normal_height72"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/marging15"
+        android:layout_toRightOf="@id/img_icon"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:layout_gravity="top"
+            android:text="王周俊"
+            android:textColor="@color/welcome_textColor"
+            android:textSize="@dimen/textsize20" />
+
+        <TextView
+            android:id="@+id/tv_analystteam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="东北证券	首席分析师"
+            android:textColor="@color/listview_item_tv_color"
+            android:textSize="@dimen/textsize15" />
+    </LinearLayout>
+
+</RelativeLayout>

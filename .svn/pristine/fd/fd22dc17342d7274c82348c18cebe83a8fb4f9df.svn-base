@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 编辑资料 -->
+    <string name="alter_empty">用户昵称不能为空</string>
+    <string name="alter_success">保存成功</string>
+    <!-- 登录 -->
+    <string name="name_empty">请填写用户名</string>
+    <string name="admin_empty">请填写用昵称</string>
+    <string name="password_empty">请填写密码</string>
+    <string name="password_error">俩次输入密码必须一致</string>
+    <string name="city_empty">请选择所在城市</string>
+    <string name="stockage">请选择股龄年限</string>
+    <string name="stockline">请选择股龄线路</string>
+    <string name="phone_error">手机号格式不正确</string>
+    <string name="smscode">请填写验证码</string>
+    <string name="advlogin_fail">顾问登录校验失败</string>
+    <string name="userlogin_fail">用户登录校验失败</string>
+    <string name="register_success">注册成功</string>
+    <string name="register_fail">注册失败</string>
+	<!-- 提问 -->
+	<string name="content_empty">请输入您的问题</string>
+	<string name="money_empty">你选择悬赏值</string>
+	<string name="title_empty">请输入标题</string>
+	<string name="answertime">请选择解答时限</string>
+	<string name="submit_success">提交成功</string>
+	<string name="submit_fail">提交失败</string>
+</resources>

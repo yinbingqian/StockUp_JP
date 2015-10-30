@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="lnpdit.lntv.tradingtime"
+    android:versionCode="4"
+    android:versionName="1.3Beta" >
+
+    <permission
+        android:name="lnpdit.lntv.tradingtime.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="lnpdit.lntv.tradingtime.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <application
+        android:name="com.sxit.activity.base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/Transparent" >
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="544e358afd98c5dc5c00985c" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="研发" />
+
+        <activity
+            android:name="com.sxit.activity.welcome.Welcome_Activity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="欢迎页" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.th.MainTabHostActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity="" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="Tab切换页" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.th.AMainTabHostActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity="" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="顾问Tab切换页" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.th.item.Information_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="信息" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.th.item.InteractionMsg_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="互动消息" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.th.item.PublishMsgList_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="发布消息列表" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.publishmsg.PublishMsg_Acitivty"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="发布消息" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.th.item.QuestionList_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="问题列表" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.answer.AAnswerQusestion_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="回答问题" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.th.item.Analyst_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="顾问团" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.th.item.AskQuestion_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="提问" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.login.Login_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="用户登录" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.Register_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="用户注册" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.chatmsg.Chat_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="咨询聊天" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.adviser.chatmsg.Chat_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="顾问端聊天" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.th.item.MyZone_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="我的空间" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.askingquest.AskingQuestionInfo_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="提问" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.askingquest.OpAnswerTimeActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="解答时限" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.analystteaminfo.AnalystTeamInfo_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="顾问个人资料" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.news.News_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="财经要文" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.news.NewsInfo_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="财经要文详情" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.wap.Wap_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="WAP页浏览" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.news.NewsList_Activity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="财经要文列表" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.askingquest.AnswerQuestionInfo_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="解答详情" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.askingquest.AnswerQuestion_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="解答" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.UserSetting_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="编辑资料" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.UserSetting_Name_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="昵称" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.UserSetting_Password_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="密码" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.UserSetting_Sex_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="性别" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.Stock_Age_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="股龄" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.usersetting.Stock_Style_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="投资风格" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.City_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="城市" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.Province_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="省" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.CityNew_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="城市" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.Age_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="股龄" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.AgeLine_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="投资风格" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.EditPassword_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="修改密码" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.register.Sex_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="性别" />
+        </activity>
+        <activity
+            android:name="com.sxit.activity.setting.Setting_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="DESCRIPTION"
+                android:value="应用设置" />
+        </activity>
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- Jpush -->
+        <activity
+            android:name="com.sxit.jpush.test.MainActivity"
+            android:label="@string/app_name" >
+
+            <!--
+                 <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <!-- For test only 测试高级功能 -->
+        <activity
+            android:name="com.sxit.jpush.test.PushSetActivity"
+            android:label="@string/app_name" />
+        <!-- For test only 测试设置 -->
+        <activity
+            android:name="com.sxit.jpush.test.SettingActivity"
+            android:label="@string/app_name" />
+        <!-- For test only 测试状态通知栏，需要打开的Activity -->
+        <activity android:name="com.sxit.jpush.test.TestActivity" >
+            <intent-filter>
+                <action android:name="jpush.testAction" />
+
+                <category android:name="jpush.testCategory" />
+            </intent-filter>
+        </activity>
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.stark.stockup" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="lnpdit.lntv.tradingtime" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name="com.sxit.jpush.test.MyReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="lnpdit.lntv.tradingtime" />
+            </intent-filter>
+        </receiver>
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="669997366fe9304ab7bfb9d4" />
+        <!-- </>值来自开发者平台取得的AppKey -->
+    </application>
+
+</manifest>

@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome"
+    android:orientation="vertical"
+    tools:context=".Information_Activity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:gravity="center" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_name_icon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" >
+
+        <ImageView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/welcome_bottom" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="@dimen/normal_height120"
+                android:layout_height="@dimen/normal_height48"
+                android:layout_marginRight="@dimen/marging5"
+                android:background="@drawable/reg_btn_bg_selector_1"
+                android:gravity="center"
+                android:text="@string/welcome_rigister"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize25" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="@dimen/normal_height120"
+                android:layout_height="@dimen/normal_height48"
+                android:layout_marginLeft="@dimen/marging5"
+                android:background="@drawable/login_btn_bg_selector_1"
+                android:gravity="center"
+                android:text="@string/welcome_login"
+                android:textColor="@color/welcome_textColor"
+                android:textSize="@dimen/textsize25" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_go"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/marging20"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize24" />
+    </RelativeLayout>
+
+</LinearLayout>

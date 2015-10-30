@@ -1,0 +1,85 @@
+package com.sxit.activity.news;
+
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.sxit.activity.base.BaseActivity;
+import com.sxit.activity.wap.Wap_Activity;
+import com.sxit.instance.Instance;
+import lnpdit.lntv.tradingtime.R;
+
+/**
+ * 新闻详情
+ * 
+ * @author huanyu 类名称：NewsInfo_Activity 创建时间:2014-10-29 下午3:18:47
+ */
+public class NewsInfo_Activity extends BaseActivity {
+	private ImageView img_back;
+	private TextView tv_title;
+	private LinearLayout ll_towap;
+private ImageView news_img;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_newsinfo);
+		initView();
+		setListeners();
+	}
+
+	private void initView() {
+		img_back = (ImageView) findViewById(R.id.img_back);
+		tv_title = (TextView) findViewById(R.id.tv_title);
+		news_img = (ImageView) findViewById(R.id.news_img);
+		ll_towap = (LinearLayout) findViewById(R.id.ll_towap);
+		Instance.imageLoader.displayImage("http://img1.money.126.net/chart/hs/time/540x360/0000001.png", news_img, Instance.new_s_options);
+	}
+
+	private void setListeners() {
+		img_back.setOnClickListener(this);
+		ll_towap.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_back:
+			finish();
+			break;
+		case R.id.ll_towap:
+			intent.putExtra("wap_url", "http://money.163.com/14/1029/15/A9NVNOCN00254TFQ.html");
+			intent.putExtra("wap_name", "沪指放量大涨1.5% 上海自贸区概念股领涨");
+			intent.setClass(NewsInfo_Activity.this, Wap_Activity.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			finish();
+		}
+		return true;
+	}
+}
